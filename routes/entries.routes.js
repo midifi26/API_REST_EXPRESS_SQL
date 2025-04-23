@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', entriesController.getEntries);
 router.post('/', entriesController.createEntry);
 router.put('/', entriesController.updateEntry);
-
+router.delete('/', entriesController.deleteEntry);
 
 module.exports = router;
 
@@ -32,3 +32,10 @@ module.exports = router;
     "old_title":"Estamos de Lunes de Back"
 }
 */
+
+
+// DELETE http://localhost:3000/api/entries
+/*
+{
+    "title": "", 
+} */

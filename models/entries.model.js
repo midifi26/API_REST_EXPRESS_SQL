@@ -1,5 +1,7 @@
 const { Pool } = require('pg');
-//const queries = require('./queries') // Queries SQL
+const queries = require('../queries/entries.queries.js') // Queries SQL
+const pool = require('../config/db_pgsql'); //Abre coneccion con BBDD
+
 /*
 const pool = new Pool({
     host: 'localhost', //No debe estar aqui. sino en config(borrarlo antes del jueves)
@@ -94,12 +96,28 @@ const updateEntry = async (entry) => {
     }
     return result
 }
+const deleteEntry = async (entry) => {
+    const { title } = entry;
+    let client, result;
+    try {
+        client = await pool.connect(); // Espera a abrir conexion
+        const data = await client.query(queries.deleteEntry,[title]);
+        result = data.rowCount
+    } catch (err) {
+        console.log(err);
+        throw err;
+    } finally {
+        client.release();//.release libera la conexión.
+    }
+    console.log(result)
+    return result
+}
 
 const entries = {
     getEntriesByEmail,
     getAllEntries,
     createEntry,
-    //deleteEntry
+    deleteEntry,
     updateEntry
 }
 
@@ -109,24 +127,25 @@ module.exports = entries;
 // Pruebas
 
     //  getEntriesByEmail("birja@thebridgeschool.es")
-    // .then(data=>console.log(data)) 
+    //  .then(data=>console.log(data)) 
 
-
+        //deleteEntry({title:"Título de noticia"})
+   
 
 // getAllEntries()
 // .then(data=>console.log(data))
 
+/*
 
+ let newEntry = {
+    title: "Se acabaron las tortillas del Markina",
+    content: "Estaban demasiado muy buenas y se las han comido todas",
+    email: "guillermu@thebridgeschool.es",
+    category: "sucesos"
+}
 
-//  let newEntry = {
-//     title: "Se acabaron las tortillas del Markina",
-//     content: "Estaban demasiado muy buenas y se las han comido todas",
-//     email: "guillermu@thebridgeschool.es",
-//     category: "sucesos"
-// }
-
-// createEntry(newEntry)
-//     .then(data => console.log(data))
+createEntry(newEntry)
+    .then(data => console.log(data))*/
     
 
 

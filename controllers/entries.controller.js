@@ -88,9 +88,27 @@ const updateEntry = async (req, res) => {
   }
 };
 
+const deleteEntry = async(req,res)=>{
+  const removeEntry = req.body; 
+  if ("title" in removeEntry) {
+    try {
+      const response = await entry.deleteEntry(removeEntry);
+      
+      res.status(200).json({
+        items_updated: response,
+        message: "Se ha borrado la entry 'Título de noticia' " 
+      });
+    } catch (error) {
+      res.status(500).json({ error: "Error en la BBDD" });
+    }
+  } else {
+  
+  }
+}
+
 module.exports = {
   getEntries,
   createEntry,
-  //deleteEntry, --> DELETE
   updateEntry, //--> PUT
+  deleteEntry, //--> DELETE
 };
