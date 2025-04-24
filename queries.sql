@@ -75,3 +75,5 @@ DELETE FROM entries WHERE title ='Noticia: SOL en Madrid';
 
 --AUTHORS
 SELECT * FROM authors;
+INSERT INTO authors(name,surname,email,image)
+VALUES ('Carlus','Rivera','carlus@thebridgeschool.es','carlus@thebridgeschool.es','https://randomuser.me/api/portraits/thumb/men/53.jpg');

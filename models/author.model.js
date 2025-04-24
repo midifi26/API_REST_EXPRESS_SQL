@@ -60,9 +60,11 @@ const updateAuthor = async (author) => {
             name, 
             surname,
             image,
-            email, 
+            email
             //old_title
         ]);
+
+        console.log(queries.updateAuthor)
         result = data.rowCount
     } catch (err) {
         console.log(err);
@@ -71,20 +73,15 @@ const updateAuthor = async (author) => {
         client.release();
     }
     return result
-}
+}*/
 const authors = {
     getAllAuthors,
     getAuthorByEmail,
     createAuthor,
-    updateAuthor
-}*/
-
-module.exports = {
-    getAllAuthors,
-    getAuthorByEmail,
-    createAuthor,
     //updateAuthor
-};
+}
+
+module.exports = authors;
 
 
 //PRUEBAS
@@ -103,12 +100,14 @@ module.exports = {
 }*/
 // createAuthor(newAuthor)
 // .then(data => console.log(data));
-
-/*let updatedAuthors ={
-    "id_author" : 10,
+/*
+let updatedAuthors ={
     "name": "Carlus",
     "surname": "Rivera",
-    "email": "guillermu@thebridgeschool.es"
+    "image": "https://randomuser.me/api/portraits/thumb",
+    "email": "guillermu@thebridgeschool.es",
+    "old_name": "Guillermo",
+    "old_surname": "Muñoz"
 };
 updateAuthor("updatedAuthors")
 .then(data=>console.log(data))*/

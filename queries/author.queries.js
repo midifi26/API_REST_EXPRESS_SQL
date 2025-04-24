@@ -6,12 +6,12 @@ const queries = {
     WHERE e.email=$1;`,
     createAuthor:`INSERT INTO authors(id_author,name, surname, email,image)
     VALUES($1, $2, $3, $4, $5)`,
-    /*updateAuthor:`UPDATE authors
+    updateAuthor:`UPDATE authors
 	SET  
         name=$1, 
         surname=$2, 
         image=$3
 	WHERE 
-        email=$4;`*/
+        email=$4;`
 }
 module.exports = queries;
